@@ -10,23 +10,30 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("You clicked Submit!");
             } else {
                 let gameType = this.getAttribute("data-type");
-                alert(`You clicked ${gameType}`);
+                rungame(gameType);
             }
         });
     }
+    rungame("addition");
 });
 
 /**
  * The game "loop", called when the script is first loaded
  * and after the users answers have been processed.
  */
-function rungame () {
+function rungame(gameType) {
     // Creates two random numbers between 1 and 25
-    let num1 = Map.floor(Math.random() * 25) + 1;
-    let num2 = Map.floor(Math.random() * 25) + 1;
-}
+    let num1 = Math.floor(Math.random() * 25) + 1;
+    let num2 = Math.floor(Math.random() * 25) + 1;
 
-function checkAnswer () {
+    if (gameType === "addition") {
+        displayAdditionQuestion(num1, num2 );
+    } else {
+        alert(`Unkown game type: ${gameType}`);
+        throw `Unkown game type: ${gameType}. Aborting!`;
+    }
+}
+function checkAnswer() {
 
 }
 function calculateCorrectAnswer() {
@@ -41,7 +48,10 @@ function incrementWrongAnswer() {
 
 }
 
-function displayAdditionQuestion() {
+function displayAdditionQuestion(operand1, operand2) {
+    document.getElementById(`operand1`).textContent = operand1;
+    document.getElementById(`operand2`).textContent = operand2;
+    document.getElementById(`operator`).textContent = "+";
 
 }
 
