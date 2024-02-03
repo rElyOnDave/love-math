@@ -35,8 +35,24 @@ function rungame(gameType) {
 }
 function checkAnswer() {
 
+ /**
+  * Gets operands (the numbers) and the operator (plus, minus, multiply, divide, etc.)
+  * directly from the  dom, and returns the correct answer
+ */
 }
 function calculateCorrectAnswer() {
+    // Get the operands and the operator from the DOM
+    let operand1 = parseInt(document.getElementById(`operand1`).innerText);
+    let operand2 = parseInt(document.getElementById(`operand2`).innerText);
+    let operator = document.getElementById(`operator`).innerText;
+    
+    // Calculate the correct answer
+    if (operator === "+") {
+        return [operand1 + operand2, "addition"];
+    } else {
+        alert(`Unimplemented operator: ${operator}`);
+        throw `Unimplemented operator: ${operator}. Aborting!`;
+    }
 
 }
 
